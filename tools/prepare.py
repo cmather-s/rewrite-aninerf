@@ -26,7 +26,8 @@ def batch_rodrigues(poses):
 
     return rot_mat
 
-def get_rigid_transformation(rot_mats, joints, parents):
+def get_rigid_transformation(poses, joints, parents):
+    rot_mats = batch_rodrigues(poses)
     rel_joints = joints.copy()
     rel_joints[1:] -= joints[parents[1:]]
 
